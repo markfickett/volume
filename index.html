@@ -5,8 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title>Volume</title>
-	<script type="text/javascript" src="volume.js"></script>
-	<link rel="stylesheet" type="text/css" href="volume.css" />
+	<link rel="stylesheet" type="text/css"
+			href="css/flick/jquery-ui-1.8.23.custom.css" />
+	<link rel="stylesheet" type="text/css" href="css/volume.css" />
+
+	<script type="text/javascript"
+			src="js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript"
+			src="js/jquery-ui-1.8.23.custom.min.js"></script>
+
+	<script type="text/javascript" src="js/levels.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
 	<h1>Volume</h1>
@@ -26,6 +35,10 @@
 		</thead>
 		<tr><td id="level"></td><td id="rate"></td></tr>
 	</table>
+
+	<h2>Controls</h2>
+	<div class="slider" id="level-slider"></div>
+	<div class="slider" id="gain-slider"></div>
 
 </body>
 </html>

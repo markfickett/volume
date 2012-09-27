@@ -10,3 +10,8 @@ table.stats thead {
 table.stats td {
 	min-width: 40ex;
 }
+
+.slider {
+	margin: 2ex;
+	font-size: 0.5em;
+}
