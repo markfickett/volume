@@ -1,0 +1,31 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Volume</title>
+	<script type="text/javascript" src="volume.js"></script>
+	<link rel="stylesheet" type="text/css" href="volume.css" />
+</head>
+<body>
+	<h1>Volume</h1>
+	<h2>Preface</h2>
+	<p>This demonstrates usage of javascript audio processing. It uses getUserMedia(). As of 2012 Sep 26, it depends on <a href="http://code.google.com/p/chromium/issues/detail?id=112367">support available only</a> in <a href="https://tools.google.com/dlpage/chromesxs?platform=mac">Chrome Canary for Mac</a>, with "Web Audio Input" enabled in chrome://flags. (Web audio is disabled for local resources.)</p>
+	<p>References:</p>
+	<ul>
+	<li><a href="http://phenomnomnominal.github.com">a guitar-tuner example by Craig Spence</a>.</li>
+	<li><a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html">w3c WebAudio spec</a></li>
+	</ul>
+
+	<h2>Status</h2>
+	<p id="status">Waiting for page to load and javascript to run...</p>
+	<table class="stats" id="stats">
+		<thead>
+		<tr><td>Raw Level</td><td>Updates/Sec</td></tr>
+		</thead>
+		<tr><td id="level"></td><td id="rate"></td></tr>
+	</table>
+
+</body>
+</html>

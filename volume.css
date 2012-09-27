@@ -1,0 +1,12 @@
+table.stats {
+	display: none; /* shown via js */
+}
+
+table.stats thead {
+	background: solid gray;
+	font-weight: bold;
+}
+
+table.stats td {
+	min-width: 40ex;
+}
