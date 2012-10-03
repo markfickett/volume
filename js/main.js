@@ -1,3 +1,8 @@
+/**
+ * Use the audio API to start reading from the microphone and delegate
+ * output and analysis.
+ */
+
 var main = {};
 
 // one of: 256, 512, 1024, 2048, 4096, 8192, 16384
@@ -9,6 +14,9 @@ main.statusElement = levelElement = rateElement = null;
 main.firstAudio = true;
 main.prevUpdateMillis = Date.now();
 
+/**
+ * Writes a status message to the console and to a text display in the UI.
+ */
 main.writeStatus = function(message) {
 	if (!main.statusElement) {
 		main.statusElement = document.getElementById('status');
@@ -91,7 +99,7 @@ main.audioProcessedCb = function(audioProcessingEvent) {
 		sum += Math.abs(audioData[i]);
 	}
 	var ave = sum / n;
-	main.updateDisplayedLevel(ave);
+	main.updateNumericDisplayedLevel(ave);
 	levels.updateDisplayedLevel(ave);
 	main.updateDisplayedRate();
 };
@@ -106,7 +114,7 @@ main.updateDisplayedRate = function() {
 	main.rateElement.innerHTML = 1 / (dt / 1000);
 };
 
-main.updateDisplayedLevel = function(ave) {
+main.updateNumericDisplayedLevel = function(ave) {
 	if (main.levelElement == null) {
 		main.levelElement = document.getElementById('level');
 	}
