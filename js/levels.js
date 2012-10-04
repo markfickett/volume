@@ -8,6 +8,8 @@ levels.SLIDER_MIN = 0;
 levels.SLIDER_MAX = 1000;
 levels.SLIDER_DELTA = levels.SLIDER_MAX - levels.SLIDER_MIN;
 
+levels.SLIDER_DEFAULT = 50;
+
 /**
  * The curve of the interpolation.
  * Larger values mean quiet sounds take up more of the slider.

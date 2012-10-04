@@ -16,7 +16,10 @@ table.stats td {
 	font-size: 0.5em;
 }
 
+table, .slider-cell {
+	width: 80%;
+}
+
 .ui-slider .ui-slider-handle {
-	background: #c66;
 	border: 1px solid black;
 }

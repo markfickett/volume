@@ -10,7 +10,11 @@ main.BUFFER_FILL_SIZE = 2048;
 
 main.PERMISSION_DENIED = 1;
 
-main.statusElement = levelElement = rateElement = null;
+main.statusElement =
+		main.levelElement =
+		main.bgColorElement =
+		main.sliderColorElement =
+		main.rateElement = null;
 main.firstAudio = true;
 main.prevUpdateMillis = Date.now();
 
@@ -102,8 +106,9 @@ main.audioProcessedCb = function(audioProcessingEvent) {
 	var smoothed = smoother.updateAndGet(ave);
 	main.updateNumericDisplayedLevel(ave);
 	levels.updateDisplayedLevel(smoothed);
-	color.updateDisplayedColor(smoothed);
 	main.updateDisplayedRate();
+	var color = colors.getColor(smoothed);
+	main.updateDisplayedColor(color);
 };
 
 main.updateDisplayedRate = function() {
@@ -114,6 +119,25 @@ main.updateDisplayedRate = function() {
 	var dt = currentMillis - main.prevUpdateMillis;
 	main.prevUpdateMillis = currentMillis;
 	main.rateElement.innerHTML = 1 / (dt / 1000);
+};
+
+main.updateDisplayedColor = function(color) {
+	if (main.bgColorElement == null) {
+		main.bgColorElement = document.body;
+		var levelSlider = document.getElementById('level-slider');
+		var handles = document.getElementsByClassName(
+				'ui-slider-handle');
+		for (var i = 0; i < handles.length; i++) {
+			if (handles[i].parentElement == levelSlider) {
+				main.sliderColorElement = handles[i];
+			} else {
+				handles[i].style.background =
+						colors.COLOR_NEAR;
+			}
+		}
+	}
+	main.bgColorElement.style.background = color;
+	main.sliderColorElement.style.background = color;
 };
 
 main.updateNumericDisplayedLevel = function(ave) {
@@ -137,7 +161,9 @@ main.initUi = function() {
 		slide: levels.slideCb,
 		min: levels.SLIDER_MIN,
 		max: levels.SLIDER_MAX,
+		value: levels.SLIDER_DEFAULT,
 	});
+	levels.sliderThreshold = levels.SLIDER_DEFAULT;
 };
 
 /**

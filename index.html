@@ -16,7 +16,7 @@
 
 	<script type="text/javascript" src="js/smoother.js"></script>
 	<script type="text/javascript" src="js/levels.js"></script>
-	<script type="text/javascript" src="js/color.js"></script>
+	<script type="text/javascript" src="js/colors.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
@@ -38,9 +38,21 @@
 		<tr><td id="level"></td><td id="rate"></td></tr>
 	</table>
 
-	<h2>Controls</h2>
-	<div class="slider" id="level-slider"></div>
-	<div class="slider" id="gain-slider"></div>
+	<h2>Levels</h2>
+	<table>
+		<tr>
+			<td>Current</td>
+			<td class="slider-cell">
+				<div class="slider" id="level-slider"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>Target</td>
+			<td class="slider-cell">
+				<div class="slider" id="gain-slider"></div>
+			</td>
+		</tr>
+	</table>
 
 </body>
 </html>
