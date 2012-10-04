@@ -22,7 +22,15 @@
 <body>
 	<h1>Volume</h1>
 	<h2>Preface</h2>
-	<p>This demonstrates usage of javascript audio processing. It uses getUserMedia(). As of 2012 Sep 26, it depends on <a href="http://code.google.com/p/chromium/issues/detail?id=112367">support available only</a> in <a href="https://tools.google.com/dlpage/chromesxs?platform=mac">Chrome Canary for Mac</a>, with "Web Audio Input" enabled in chrome://flags. (Web audio is disabled for local resources.)</p>
+	<p>This shows visual feedback for the current input volume. It uses only javascript for audio processing.</p>
+	<h2>Browser Support</h2>
+	<p>See <a href="http://caniuse.com/stream">support for stream API</a> (in-browser audio acquisition) and <a href="http://caniuse.com/#feat=audio-api">web audio API</a> (in-browser audio processing).</p>
+	<table>
+		<tr><th>Browser</th><th>Support as of 2012 Oct 3</th></tr>
+		<tr><td>Chrome</td><td>Available only in <a href="https://tools.google.com/dlpage/chromesxs?platform=mac">canary version for Mac</a> with "Web Audio Input" enabled in chrome://flags. <a href="http://code.google.com/p/chromium/issues/detail?id=112367">Feature request tracker</a>. (Web audio is disabled for local resources: this must be loaded via http://, not file://.)</p>
+		<tr><td>Firefox, Safari, Opera, IE</td><td>No / not yet.</td></tr>
+	</table>
+
 	<p>References:</p>
 	<ul>
 	<li><a href="http://phenomnomnominal.github.com">a guitar-tuner example by Craig Spence</a>.</li>
@@ -32,10 +40,9 @@
 	<h2>Status</h2>
 	<p id="status">Waiting for page to load and javascript to run...</p>
 	<table class="stats" id="stats">
-		<thead>
-		<tr><td>Raw Level</td><td>Updates/Sec</td></tr>
-		</thead>
-		<tr><td id="level"></td><td id="rate"></td></tr>
+		<tr><th>Raw Level</th><td id="level"></td></tr>
+		<tr><th>Smoothed Level</th><td id="smoothed-level"></td></tr>
+		<tr><th>Updates/Sec</th><td id="rate"></td></tr>
 	</table>
 
 	<h2>Levels</h2>

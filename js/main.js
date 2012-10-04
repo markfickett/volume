@@ -12,6 +12,7 @@ main.PERMISSION_DENIED = 1;
 
 main.statusElement =
 		main.levelElement =
+		main.smoothedLevelElement =
 		main.bgColorElement =
 		main.sliderColorElement =
 		main.rateElement = null;
@@ -104,7 +105,7 @@ main.audioProcessedCb = function(audioProcessingEvent) {
 	}
 	var ave = sum / n;
 	var smoothed = smoother.updateAndGet(ave);
-	main.updateNumericDisplayedLevel(ave);
+	main.updateNumericDisplayedLevel(ave, smoothed);
 	levels.updateDisplayedLevel(smoothed);
 	main.updateDisplayedRate();
 	var color = colors.getColor(smoothed);
@@ -140,15 +141,21 @@ main.updateDisplayedColor = function(color) {
 	main.sliderColorElement.style.background = color;
 };
 
-main.updateNumericDisplayedLevel = function(ave) {
+main.updateNumericDisplayedLevel = function(ave, smoothed) {
 	if (main.levelElement == null) {
 		main.levelElement = document.getElementById('level');
+		main.smoothedLevelElement = document.getElementById(
+				'smoothed-level');
 	}
-	main.levelElement.innerHTML = ave;
-	var exceedingThreshold = levels.levelToSliderPosition(ave) >=
+	main.setLevelDisplay(main.levelElement, ave);
+	main.setLevelDisplay(main.smoothedLevelElement, smoothed);
+}
+
+main.setLevelDisplay = function(element, value) {
+	element.innerHTML = value;
+	var above = levels.levelToSliderPosition(value) >=
 			levels.sliderThreshold;
-	main.levelElement.style.fontWeight = exceedingThreshold ?
-			'bold' : 'inherit';
+	element.style.fontWeight = above ? 'bold' : 'inherit';
 };
 
 main.initUi = function() {

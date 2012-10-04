@@ -1,10 +1,14 @@
-table.stats {
-	display: none; /* shown via js */
+th {
+	background: rgba(50, 50, 50, 0.2);
+	font-weight: bold;
 }
 
-table.stats thead {
-	background: solid gray;
-	font-weight: bold;
+th, td {
+	padding: 0 2ex;
+}
+
+table.stats {
+	display: none; /* shown via js */
 }
 
 table.stats td {
