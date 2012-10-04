@@ -99,8 +99,9 @@ main.audioProcessedCb = function(audioProcessingEvent) {
 		sum += Math.abs(audioData[i]);
 	}
 	var ave = sum / n;
+	var smoothed = smoother.updateAndGet(ave);
 	main.updateNumericDisplayedLevel(ave);
-	levels.updateDisplayedLevel(ave);
+	levels.updateDisplayedLevel(smoothed);
 	main.updateDisplayedRate();
 };
 
