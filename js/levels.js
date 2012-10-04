@@ -39,9 +39,9 @@ levels.levelToSliderPosition = function(level) {
 	return y;
 };
 
-levels.sliderPositionTolevel = function(pos) {
+levels.sliderPositionToLevel = function(pos) {
 	var x = (pos - levels.SLIDER_MIN) / levels.SLIDER_DELTA;
-	x = x * levels.adjustedLog(levels.MULT) - Math.E;
+	x = x * levels.adjustedLog(levels.LOG_WINDOW) - Math.E;
 	x = Math.exp(x) - Math.exp(-Math.E);
 	x = (x / levels.LOG_WINDOW) / levels.GAIN;
 	return x;
