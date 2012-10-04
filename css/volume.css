@@ -15,3 +15,8 @@ table.stats td {
 	margin: 2ex;
 	font-size: 0.5em;
 }
+
+.ui-slider .ui-slider-handle {
+	background: #c66;
+	border: 1px solid black;
+}
