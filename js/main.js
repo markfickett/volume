@@ -102,6 +102,7 @@ main.audioProcessedCb = function(audioProcessingEvent) {
 	var smoothed = smoother.updateAndGet(ave);
 	main.updateNumericDisplayedLevel(ave);
 	levels.updateDisplayedLevel(smoothed);
+	color.updateDisplayedColor(smoothed);
 	main.updateDisplayedRate();
 };
 
