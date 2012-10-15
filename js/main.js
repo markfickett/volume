@@ -132,8 +132,8 @@ main.updateDisplayedColor = function(color) {
 			if (handles[i].parentElement == levelSlider) {
 				main.sliderColorElement = handles[i];
 			} else {
-				handles[i].style.background =
-						colors.COLOR_NEAR;
+				handles[i].style.background = colors.getColor(
+						levels.levelThreshold);
 			}
 		}
 	}
@@ -170,7 +170,6 @@ main.initUi = function() {
 		max: levels.SLIDER_MAX,
 		value: levels.SLIDER_DEFAULT,
 	});
-	levels.sliderThreshold = levels.SLIDER_DEFAULT;
 };
 
 /**

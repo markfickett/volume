@@ -21,7 +21,7 @@ levels.LOG_WINDOW = 10;
  */
 levels.GAIN = 0.2;
 
-levels.sliderThreshold = levels.SLIDER_MIN;
+levels.sliderThreshold = levels.SLIDER_DEFAULT;
 
 /**
  * More or less log, but f(0) = 0.
@@ -51,9 +51,17 @@ levels.sliderPositionToLevel = function(pos) {
 
 levels.slideCb = function(event, ui) {
 	levels.sliderThreshold = ui.value;
+	levels.setLevelThresholdFromSliderThreshold();
+};
+
+levels.setLevelThresholdFromSliderThreshold = function() {
+	levels.levelThreshold = levels.sliderPositionToLevel(
+			levels.sliderThreshold);
 };
 
 levels.updateDisplayedLevel = function(level) {
 	var sliderValue = levels.levelToSliderPosition(level);
 	$( '#level-slider' ).slider('value', sliderValue);
 };
+
+levels.setLevelThresholdFromSliderThreshold();
