@@ -7,9 +7,9 @@ var colors = {};
 /**
  * Colors for sounds which are too low, too high, or near enough the threshold.
  */
-colors.COLOR_LOW = '#711';
-colors.COLOR_NEAR = '#8e8';
-colors.COLOR_HIGH = '#ee6';
+colors.COLOR_LOW = 'hsl(0, 60%, 24%)';
+colors.COLOR_NEAR = 'hsl(120, 100%, 60%)';
+colors.COLOR_HIGH = 'hsl(60, 100%, 46%)';
 
 /**
  * If a level is within a factor of NEAR of the threshold, it is considered
