@@ -8,7 +8,7 @@ var main = {};
 // one of: 256, 512, 1024, 2048, 4096, 8192, 16384
 main.BUFFER_FILL_SIZE = 2048;
 
-main.PERMISSION_DENIED = 1;
+main.PERMISSION_DENIED = 'PERMISSION_DENIED';
 
 main.statusElement =
 		main.levelElement =
@@ -26,10 +26,10 @@ main.writeStatus = function(message) {
 	if (!main.statusElement) {
 		main.statusElement = document.getElementById('status');
 	}
-	main.statusElement.innerHTML = message;
 	if (window.console && window.console.log) {
 		console.log(message);
 	}
+	main.statusElement.innerHTML = message;
 };
 
 /**
@@ -70,7 +70,7 @@ main.audioSuccessCb = function(stream) {
 	var audioContext = new AudioContext();
 
 	var sampleRate = audioContext.sampleRate;
-	var bufferFiller = audioContext.createJavaScriptNode(
+	var bufferFiller = audioContext.createScriptProcessor(
 			main.BUFFER_FILL_SIZE,
 			1 /* input channels */,
 			1 /* output channels */);
@@ -82,10 +82,12 @@ main.audioSuccessCb = function(stream) {
 };
 
 main.audioErrorCb = function(navigatorUserMediaError) {
-	if (navigatorUserMediaError.code == main.PERMISSION_DENIED) {
-		main.writeStatus('Permission denied!');
+	if (navigatorUserMediaError.name == main.PERMISSION_DENIED) {
+		main.writeStatus('Permission denied! (Via error object.)');
+	} else if (navigatorUserMediaError == main.PERMISSION_DENIED) {
+		main.writeStatus('Permission denied! (Via string.)');
 	} else {
-		main.writeStatus(e);
+		main.writeStatus(navigatorUserMediaError);
 	}
 };
 
